@@ -14,6 +14,8 @@ Requirements: Node.js 18+, JDK 17 and Android Studio (with the Android SDK).
 ```
 npm install
 npx cap add android
+# allow fingerprint / face unlock: add this line to android/app/src/main/AndroidManifest.xml (inside <manifest>)
+#   <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 npm run android:apk        # APK at android/app/build/outputs/apk/debug/app-debug.apk
 npm run android:open       # or open the project in Android Studio
 ```
@@ -25,6 +27,7 @@ Replace `www/index.html` with a new version and run `npx cap sync android` (or p
 Build a signed release bundle in Android Studio (Build → Generate Signed Bundle / APK) and upload the `.aab` in the Google Play Console.
 
 ## Notes
+- Biometric unlock: Settings → turn on App Lock (PIN), then Biometric Unlock. The phone asks for your fingerprint or face when the app opens; the PIN always works as a backup.
 - Exchange rates update automatically once a day when the phone is online (source: open.er-api.com). Manual rates in Settings → Exchange Rates always take priority.
 - The share buttons open Android's share sheet (WhatsApp, Gmail, etc.).
 - All data is stored on the phone. Use **Backup & Restore** in the app to keep a copy.
